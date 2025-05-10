@@ -1,0 +1,34 @@
+def ReconstructString(k, d, pairs):
+    first_kmer = pairs[0][0]
+    reconstructed_string = first_kmer
+
+    for pair in pairs[1:]:
+        reconstructed_string += pair[0][-1]
+
+    for pair in pairs:
+        reconstructed_string += pair[1][:d]
+
+    return reconstructed_string
+
+k = 3
+d = 1
+pairs = [("ACC", "ATA"),
+         ("ACT", "ATT"),
+         ("ATA", "TGA"),
+         ("ATT", "TGA"),
+         ("CAC", "GAT"),
+         ("CCG", "TAC"),
+         ("CGA", "ACT"),
+         ("CTG", "AGC"),
+         ("CTG", "TTC"),
+         ("GAA", "CTT"),
+         ("GAT", "CTG"),
+         ("GAT", "CTG"),
+         ("TAC", "GAT"),
+         ("TCT", "AAG"),
+         ("TGA", "GCT"),
+         ("TGA", "TCT"),
+         ("TTC", "GAA")]
+
+result = ReconstructString(k, d, pairs)
+print(result)
